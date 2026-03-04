@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { DeleteByOrgApiKeysByIdData, DeleteByOrgApiKeysByIdErrors, DeleteByOrgApiKeysByIdResponses, DeleteByOrgByRepoBranchesByBranchData, DeleteByOrgByRepoBranchesByBranchErrors, DeleteByOrgByRepoBranchesByBranchResponses, DeleteByOrgByRepoData, DeleteByOrgByRepoErrors, DeleteByOrgByRepoResponses, DeleteByOrgByRepoWebhooksByWebhookIdData, DeleteByOrgByRepoWebhooksByWebhookIdErrors, DeleteByOrgByRepoWebhooksByWebhookIdResponses, GetByOrgApiKeysData, GetByOrgApiKeysErrors, GetByOrgApiKeysResponses, GetByOrgByRepoBranchesData, GetByOrgByRepoBranchesErrors, GetByOrgByRepoBranchesResponses, GetByOrgByRepoCommitsByShaData, GetByOrgByRepoCommitsByShaErrors, GetByOrgByRepoCommitsByShaResponses, GetByOrgByRepoCommitsData, GetByOrgByRepoCommitsErrors, GetByOrgByRepoCommitsResponses, GetByOrgByRepoContentData, GetByOrgByRepoContentErrors, GetByOrgByRepoContentResponses, GetByOrgByRepoData, GetByOrgByRepoErrors, GetByOrgByRepoResponses, GetByOrgByRepoWebhooksData, GetByOrgByRepoWebhooksErrors, GetByOrgByRepoWebhooksResponses, GetByOrgData, GetByOrgErrors, GetByOrgReposData, GetByOrgReposErrors, GetByOrgReposResponses, GetByOrgResponses, PatchByOrgByRepoData, PatchByOrgByRepoErrors, PatchByOrgByRepoResponses, PostByOrgApiKeysData, PostByOrgApiKeysErrors, PostByOrgApiKeysResponses, PostByOrgByRepoBranchesData, PostByOrgByRepoBranchesErrors, PostByOrgByRepoBranchesResponses, PostByOrgByRepoWebhooksData, PostByOrgByRepoWebhooksErrors, PostByOrgByRepoWebhooksResponses, PostByOrgReposData, PostByOrgReposErrors, PostByOrgReposResponses } from './types.gen';
+import type { DeleteByOrgApiKeysByIdData, DeleteByOrgApiKeysByIdErrors, DeleteByOrgApiKeysByIdResponses, DeleteByOrgByRepoBranchesByBranchData, DeleteByOrgByRepoBranchesByBranchErrors, DeleteByOrgByRepoBranchesByBranchResponses, DeleteByOrgByRepoData, DeleteByOrgByRepoErrors, DeleteByOrgByRepoResponses, DeleteByOrgByRepoWebhooksByWebhookIdData, DeleteByOrgByRepoWebhooksByWebhookIdErrors, DeleteByOrgByRepoWebhooksByWebhookIdResponses, GetByOrgApiKeysData, GetByOrgApiKeysErrors, GetByOrgApiKeysResponses, GetByOrgByRepoBranchesData, GetByOrgByRepoBranchesErrors, GetByOrgByRepoBranchesResponses, GetByOrgByRepoCommitsByShaData, GetByOrgByRepoCommitsByShaErrors, GetByOrgByRepoCommitsByShaResponses, GetByOrgByRepoCommitsData, GetByOrgByRepoCommitsErrors, GetByOrgByRepoCommitsResponses, GetByOrgByRepoContentData, GetByOrgByRepoContentErrors, GetByOrgByRepoContentResponses, GetByOrgByRepoData, GetByOrgByRepoDiffData, GetByOrgByRepoDiffErrors, GetByOrgByRepoDiffResponses, GetByOrgByRepoErrors, GetByOrgByRepoResponses, GetByOrgByRepoWebhooksData, GetByOrgByRepoWebhooksErrors, GetByOrgByRepoWebhooksResponses, GetByOrgData, GetByOrgErrors, GetByOrgReposData, GetByOrgReposErrors, GetByOrgReposResponses, GetByOrgResponses, PatchByOrgByRepoData, PatchByOrgByRepoErrors, PatchByOrgByRepoResponses, PostByOrgApiKeysData, PostByOrgApiKeysErrors, PostByOrgApiKeysResponses, PostByOrgByRepoBranchesData, PostByOrgByRepoBranchesErrors, PostByOrgByRepoBranchesResponses, PostByOrgByRepoCommitsData, PostByOrgByRepoCommitsErrors, PostByOrgByRepoCommitsResponses, PostByOrgByRepoWebhooksData, PostByOrgByRepoWebhooksErrors, PostByOrgByRepoWebhooksResponses, PostByOrgReposData, PostByOrgReposErrors, PostByOrgReposResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -178,6 +178,21 @@ export const getByOrgByRepoCommits = <ThrowOnError extends boolean = false>(opti
 });
 
 /**
+ * Create commit
+ *
+ * Create a new commit on a branch with file changes
+ */
+export const postByOrgByRepoCommits = <ThrowOnError extends boolean = false>(options: Options<PostByOrgByRepoCommitsData, ThrowOnError>) => (options.client ?? client).post<PostByOrgByRepoCommitsResponses, PostByOrgByRepoCommitsErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/{org}/{repo}/commits',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
  * Get commit
  *
  * Retrieve a specific commit by its SHA
@@ -185,6 +200,17 @@ export const getByOrgByRepoCommits = <ThrowOnError extends boolean = false>(opti
 export const getByOrgByRepoCommitsBySha = <ThrowOnError extends boolean = false>(options: Options<GetByOrgByRepoCommitsByShaData, ThrowOnError>) => (options.client ?? client).get<GetByOrgByRepoCommitsByShaResponses, GetByOrgByRepoCommitsByShaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/{org}/{repo}/commits/{sha}',
+    ...options
+});
+
+/**
+ * Get diff
+ *
+ * Retrieve the diff between two commit OIDs
+ */
+export const getByOrgByRepoDiff = <ThrowOnError extends boolean = false>(options: Options<GetByOrgByRepoDiffData, ThrowOnError>) => (options.client ?? client).get<GetByOrgByRepoDiffResponses, GetByOrgByRepoDiffErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/{org}/{repo}/diff',
     ...options
 });
 
