@@ -1,28 +1,21 @@
 # @mesadev/rest
 
-TypeScript REST SDK for the [Mesa](https://mesa.dev) API.
+TypeScript REST SDK for the Mesa API.
 
-Generated from the OpenAPI specification using [@hey-api/openapi-ts](https://heyapi.dev).
+This package is generated from the OpenAPI schema and mirrored to the public `mesa-dot-dev/ts-rest` repository.
 
-## Installation
+## Install
 
 ```bash
-npm install @mesadev/rest
+bun add @mesadev/rest
 ```
 
-## Usage
+## Regenerate from OpenAPI
 
-```typescript
-import { createClient } from "@mesadev/rest";
+From the monorepo root:
 
-const client = createClient({
-  baseUrl: "https://depot.mesa.dev/api/v1",
-  headers: {
-    Authorization: "Bearer YOUR_API_KEY",
-  },
-});
+```bash
+bun run sdk:generate:typescript
 ```
 
-## License
-
-Apache-2.0
+`sdk:sync:typescript-rest` remains available as an alias when you want to run the sync step explicitly.

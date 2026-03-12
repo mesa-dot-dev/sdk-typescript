@@ -1,6 +1,6 @@
 {
   "name": "@mesadev/rest",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "TypeScript REST SDK for the Mesa API",
   "author": "Mesa",
   "license": "Apache-2.0",
@@ -22,16 +22,21 @@
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "README.md"
   ],
   "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "biome check src package.json README.md",
+    "test": "bun test",
+    "sync": "../../../../bazel.sh run --config=local '--@com_google_protobuf//bazel/toolchains:allow_nonstandard_protoc' //packages/sdk/rest/ts:update_typescript_rest",
+    "prepublishOnly": "bun run build"
   },
   "dependencies": {
     "@hey-api/client-fetch": "^0.13.1"
   },
   "devDependencies": {
-    "typescript": "~5.8.3"
+    "typescript": "^5.9.3"
   }
 }

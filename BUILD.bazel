@@ -1,0 +1,9 @@
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
+
+write_source_files(
+    name = "update_typescript_rest",
+    files = {
+        "src": "//packages/core:sdk_typescript",
+    },
+    diff_test = False,
+)
