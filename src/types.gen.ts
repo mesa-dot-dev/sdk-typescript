@@ -1900,6 +1900,7 @@ export type GetByOrgByRepoCommitsResponses = {
                 email: string;
                 date?: string;
             };
+            parents?: Array<string>;
         }>;
     };
 };
@@ -2159,6 +2160,7 @@ export type GetByOrgByRepoCommitsByShaResponses = {
             email: string;
             date?: string;
         };
+        parents?: Array<string>;
     };
 };
 
