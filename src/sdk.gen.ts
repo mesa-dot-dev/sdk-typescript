@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { DeleteByOrgApiKeysByIdData, DeleteByOrgApiKeysByIdErrors, DeleteByOrgApiKeysByIdResponses, DeleteByOrgByRepoBranchesByBranchData, DeleteByOrgByRepoBranchesByBranchErrors, DeleteByOrgByRepoBranchesByBranchResponses, DeleteByOrgByRepoData, DeleteByOrgByRepoErrors, DeleteByOrgByRepoResponses, DeleteByOrgByRepoWebhooksByWebhookIdData, DeleteByOrgByRepoWebhooksByWebhookIdErrors, DeleteByOrgByRepoWebhooksByWebhookIdResponses, GetByOrgApiKeysData, GetByOrgApiKeysErrors, GetByOrgApiKeysResponses, GetByOrgByRepoBranchesData, GetByOrgByRepoBranchesErrors, GetByOrgByRepoBranchesResponses, GetByOrgByRepoCommitsByShaData, GetByOrgByRepoCommitsByShaErrors, GetByOrgByRepoCommitsByShaResponses, GetByOrgByRepoCommitsData, GetByOrgByRepoCommitsErrors, GetByOrgByRepoCommitsResponses, GetByOrgByRepoContentData, GetByOrgByRepoContentErrors, GetByOrgByRepoContentResponses, GetByOrgByRepoData, GetByOrgByRepoDiffData, GetByOrgByRepoDiffErrors, GetByOrgByRepoDiffResponses, GetByOrgByRepoErrors, GetByOrgByRepoResponses, GetByOrgByRepoWebhooksData, GetByOrgByRepoWebhooksErrors, GetByOrgByRepoWebhooksResponses, GetByOrgData, GetByOrgErrors, GetByOrgReposData, GetByOrgReposErrors, GetByOrgReposResponses, GetByOrgResponses, GetWhoamiData, GetWhoamiErrors, GetWhoamiResponses, PatchByOrgByRepoData, PatchByOrgByRepoErrors, PatchByOrgByRepoResponses, PostByOrgApiKeysData, PostByOrgApiKeysErrors, PostByOrgApiKeysResponses, PostByOrgByRepoBranchesData, PostByOrgByRepoBranchesErrors, PostByOrgByRepoBranchesResponses, PostByOrgByRepoCommitsData, PostByOrgByRepoCommitsErrors, PostByOrgByRepoCommitsResponses, PostByOrgByRepoWebhooksData, PostByOrgByRepoWebhooksErrors, PostByOrgByRepoWebhooksResponses, PostByOrgReposData, PostByOrgReposErrors, PostByOrgReposResponses } from './types.gen';
+import type { DeleteByOrgApiKeysByIdData, DeleteByOrgApiKeysByIdErrors, DeleteByOrgApiKeysByIdResponses, DeleteByOrgByRepoBranchesByBranchData, DeleteByOrgByRepoBranchesByBranchErrors, DeleteByOrgByRepoBranchesByBranchResponses, DeleteByOrgByRepoData, DeleteByOrgByRepoErrors, DeleteByOrgByRepoResponses, DeleteByOrgByRepoWebhooksByWebhookIdData, DeleteByOrgByRepoWebhooksByWebhookIdErrors, DeleteByOrgByRepoWebhooksByWebhookIdResponses, DeleteByOrgReposBulkData, DeleteByOrgReposBulkErrors, DeleteByOrgReposBulkResponses, GetByOrgApiKeysData, GetByOrgApiKeysErrors, GetByOrgApiKeysResponses, GetByOrgByRepoBranchesData, GetByOrgByRepoBranchesErrors, GetByOrgByRepoBranchesResponses, GetByOrgByRepoCommitsByShaData, GetByOrgByRepoCommitsByShaErrors, GetByOrgByRepoCommitsByShaResponses, GetByOrgByRepoCommitsData, GetByOrgByRepoCommitsErrors, GetByOrgByRepoCommitsResponses, GetByOrgByRepoContentData, GetByOrgByRepoContentErrors, GetByOrgByRepoContentResponses, GetByOrgByRepoData, GetByOrgByRepoDiffData, GetByOrgByRepoDiffErrors, GetByOrgByRepoDiffResponses, GetByOrgByRepoErrors, GetByOrgByRepoResponses, GetByOrgByRepoWebhooksData, GetByOrgByRepoWebhooksErrors, GetByOrgByRepoWebhooksResponses, GetByOrgData, GetByOrgErrors, GetByOrgReposData, GetByOrgReposErrors, GetByOrgReposFacetsData, GetByOrgReposFacetsErrors, GetByOrgReposFacetsResponses, GetByOrgReposListData, GetByOrgReposListErrors, GetByOrgReposListResponses, GetByOrgReposResponses, GetByOrgResponses, GetWhoamiData, GetWhoamiErrors, GetWhoamiResponses, PatchByOrgByRepoData, PatchByOrgByRepoErrors, PatchByOrgByRepoResponses, PostByOrgApiKeysData, PostByOrgApiKeysErrors, PostByOrgApiKeysResponses, PostByOrgByRepoBranchesData, PostByOrgByRepoBranchesErrors, PostByOrgByRepoBranchesResponses, PostByOrgByRepoCommitsData, PostByOrgByRepoCommitsErrors, PostByOrgByRepoCommitsResponses, PostByOrgByRepoWebhooksData, PostByOrgByRepoWebhooksErrors, PostByOrgByRepoWebhooksResponses, PostByOrgReposBulkMetadataData, PostByOrgReposBulkMetadataErrors, PostByOrgReposBulkMetadataResponses, PostByOrgReposData, PostByOrgReposErrors, PostByOrgReposResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -85,6 +85,58 @@ export const getByOrgRepos = <ThrowOnError extends boolean = false>(options: Opt
 export const postByOrgRepos = <ThrowOnError extends boolean = false>(options: Options<PostByOrgReposData, ThrowOnError>) => (options.client ?? client).post<PostByOrgReposResponses, PostByOrgReposErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/{org}/repos',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * List repositories (paginated)
+ *
+ * List repositories with offset pagination, sorting, search, and metadata filtering
+ */
+export const getByOrgReposList = <ThrowOnError extends boolean = false>(options: Options<GetByOrgReposListData, ThrowOnError>) => (options.client ?? client).get<GetByOrgReposListResponses, GetByOrgReposListErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/{org}/repos/list',
+    ...options
+});
+
+/**
+ * Get metadata facets
+ *
+ * Get metadata facets for repos
+ */
+export const getByOrgReposFacets = <ThrowOnError extends boolean = false>(options: Options<GetByOrgReposFacetsData, ThrowOnError>) => (options.client ?? client).get<GetByOrgReposFacetsResponses, GetByOrgReposFacetsErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/{org}/repos/facets',
+    ...options
+});
+
+/**
+ * Bulk delete repositories
+ *
+ * Bulk delete repos
+ */
+export const deleteByOrgReposBulk = <ThrowOnError extends boolean = false>(options: Options<DeleteByOrgReposBulkData, ThrowOnError>) => (options.client ?? client).delete<DeleteByOrgReposBulkResponses, DeleteByOrgReposBulkErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/{org}/repos/bulk',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Bulk set or remove metadata
+ *
+ * Bulk set or remove metadata
+ */
+export const postByOrgReposBulkMetadata = <ThrowOnError extends boolean = false>(options: Options<PostByOrgReposBulkMetadataData, ThrowOnError>) => (options.client ?? client).post<PostByOrgReposBulkMetadataResponses, PostByOrgReposBulkMetadataErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/{org}/repos/bulk/metadata',
     ...options,
     headers: {
         'Content-Type': 'application/json',

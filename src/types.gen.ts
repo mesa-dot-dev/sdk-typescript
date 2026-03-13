@@ -815,6 +815,478 @@ export type PostByOrgReposResponses = {
 
 export type PostByOrgReposResponse = PostByOrgReposResponses[keyof PostByOrgReposResponses];
 
+export type GetByOrgReposListData = {
+    body?: never;
+    path: {
+        org: string;
+    };
+    query?: {
+        page?: number;
+        pageSize?: number;
+        sortBy?: 'name' | 'created_at';
+        sortOrder?: 'asc' | 'desc';
+        search?: string;
+        metadata?: string;
+    };
+    url: '/{org}/repos/list';
+};
+
+export type GetByOrgReposListErrors = {
+    /**
+     * Invalid request
+     */
+    400: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Unauthorized
+     */
+    401: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Forbidden
+     */
+    403: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Not found
+     */
+    404: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Not acceptable
+     */
+    406: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Conflict
+     */
+    409: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Internal error
+     */
+    500: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+};
+
+export type GetByOrgReposListError = GetByOrgReposListErrors[keyof GetByOrgReposListErrors];
+
+export type GetByOrgReposListResponses = {
+    /**
+     * Paginated repository list
+     */
+    200: {
+        total: number;
+        page: number;
+        page_size: number;
+        total_pages: number;
+        repos: Array<{
+            id: string;
+            name: string;
+            default_branch: string;
+            size_bytes: number;
+            created_at: string;
+            metadata: {
+                [key: string]: string;
+            };
+            upstream: {
+                uri: string;
+                status: 'synced' | 'error';
+            } | null;
+        }>;
+    };
+};
+
+export type GetByOrgReposListResponse = GetByOrgReposListResponses[keyof GetByOrgReposListResponses];
+
+export type GetByOrgReposFacetsData = {
+    body?: never;
+    path: {
+        org: string;
+    };
+    query?: never;
+    url: '/{org}/repos/facets';
+};
+
+export type GetByOrgReposFacetsErrors = {
+    /**
+     * Invalid request
+     */
+    400: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Unauthorized
+     */
+    401: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Forbidden
+     */
+    403: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Not found
+     */
+    404: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Not acceptable
+     */
+    406: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Conflict
+     */
+    409: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Internal error
+     */
+    500: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+};
+
+export type GetByOrgReposFacetsError = GetByOrgReposFacetsErrors[keyof GetByOrgReposFacetsErrors];
+
+export type GetByOrgReposFacetsResponses = {
+    /**
+     * Facets
+     */
+    200: {
+        facets: {
+            [key: string]: Array<{
+                value: string;
+                count: number;
+            }>;
+        };
+    };
+};
+
+export type GetByOrgReposFacetsResponse = GetByOrgReposFacetsResponses[keyof GetByOrgReposFacetsResponses];
+
+export type DeleteByOrgReposBulkData = {
+    body: {
+        repo_ids: Array<string>;
+    };
+    path: {
+        org: string;
+    };
+    query?: never;
+    url: '/{org}/repos/bulk';
+};
+
+export type DeleteByOrgReposBulkErrors = {
+    /**
+     * Invalid request
+     */
+    400: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Unauthorized
+     */
+    401: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Forbidden
+     */
+    403: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Not found
+     */
+    404: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Not acceptable
+     */
+    406: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Conflict
+     */
+    409: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Internal error
+     */
+    500: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+};
+
+export type DeleteByOrgReposBulkError = DeleteByOrgReposBulkErrors[keyof DeleteByOrgReposBulkErrors];
+
+export type DeleteByOrgReposBulkResponses = {
+    /**
+     * Deleted count
+     */
+    200: {
+        deleted: number;
+    };
+};
+
+export type DeleteByOrgReposBulkResponse = DeleteByOrgReposBulkResponses[keyof DeleteByOrgReposBulkResponses];
+
+export type PostByOrgReposBulkMetadataData = {
+    body: {
+        repo_ids: Array<string>;
+        action: 'set' | 'remove';
+        key: string;
+        value?: string;
+    };
+    path: {
+        org: string;
+    };
+    query?: never;
+    url: '/{org}/repos/bulk/metadata';
+};
+
+export type PostByOrgReposBulkMetadataErrors = {
+    /**
+     * Invalid request
+     */
+    400: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Unauthorized
+     */
+    401: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Forbidden
+     */
+    403: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Not found
+     */
+    404: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Not acceptable
+     */
+    406: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Conflict
+     */
+    409: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Internal error
+     */
+    500: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+};
+
+export type PostByOrgReposBulkMetadataError = PostByOrgReposBulkMetadataErrors[keyof PostByOrgReposBulkMetadataErrors];
+
+export type PostByOrgReposBulkMetadataResponses = {
+    /**
+     * Updated count
+     */
+    200: {
+        updated: number;
+    };
+};
+
+export type PostByOrgReposBulkMetadataResponse = PostByOrgReposBulkMetadataResponses[keyof PostByOrgReposBulkMetadataResponses];
+
 export type DeleteByOrgByRepoData = {
     body?: never;
     path: {
