@@ -575,7 +575,6 @@ export type GetByOrgReposResponses = {
             name: string;
             default_branch: string;
             head_oid: string | null;
-            size_bytes: number;
             created_at: string;
             /**
              * Optionally add an upstream repository. You can configure automatic syncing from the upstream repository.
@@ -765,7 +764,6 @@ export type PostByOrgReposResponses = {
         name: string;
         default_branch: string;
         head_oid: string | null;
-        size_bytes: number;
         created_at: string;
         /**
          * Optionally add an upstream repository. You can configure automatic syncing from the upstream repository.
@@ -933,7 +931,6 @@ export type GetByOrgReposListResponses = {
             id: string;
             name: string;
             default_branch: string;
-            size_bytes: number;
             created_at: string;
             metadata: {
                 [key: string]: string;
@@ -1506,7 +1503,6 @@ export type GetByOrgByRepoResponses = {
         name: string;
         default_branch: string;
         head_oid: string | null;
-        size_bytes: number;
         created_at: string;
         /**
          * Optionally add an upstream repository. You can configure automatic syncing from the upstream repository.
@@ -1696,7 +1692,6 @@ export type PatchByOrgByRepoResponses = {
         name: string;
         default_branch: string;
         head_oid: string | null;
-        size_bytes: number;
         created_at: string;
         /**
          * Optionally add an upstream repository. You can configure automatic syncing from the upstream repository.
