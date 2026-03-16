@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { DeleteByOrgApiKeysByIdData, DeleteByOrgApiKeysByIdErrors, DeleteByOrgApiKeysByIdResponses, DeleteByOrgByRepoBranchesByBranchData, DeleteByOrgByRepoBranchesByBranchErrors, DeleteByOrgByRepoBranchesByBranchResponses, DeleteByOrgByRepoData, DeleteByOrgByRepoErrors, DeleteByOrgByRepoResponses, DeleteByOrgByRepoWebhooksByWebhookIdData, DeleteByOrgByRepoWebhooksByWebhookIdErrors, DeleteByOrgByRepoWebhooksByWebhookIdResponses, DeleteByOrgReposBulkData, DeleteByOrgReposBulkErrors, DeleteByOrgReposBulkResponses, GetByOrgApiKeysData, GetByOrgApiKeysErrors, GetByOrgApiKeysResponses, GetByOrgByRepoBranchesData, GetByOrgByRepoBranchesErrors, GetByOrgByRepoBranchesResponses, GetByOrgByRepoCommitsByShaData, GetByOrgByRepoCommitsByShaErrors, GetByOrgByRepoCommitsByShaResponses, GetByOrgByRepoCommitsData, GetByOrgByRepoCommitsErrors, GetByOrgByRepoCommitsResponses, GetByOrgByRepoContentData, GetByOrgByRepoContentErrors, GetByOrgByRepoContentResponses, GetByOrgByRepoData, GetByOrgByRepoDiffData, GetByOrgByRepoDiffErrors, GetByOrgByRepoDiffResponses, GetByOrgByRepoErrors, GetByOrgByRepoResponses, GetByOrgByRepoWebhooksData, GetByOrgByRepoWebhooksErrors, GetByOrgByRepoWebhooksResponses, GetByOrgData, GetByOrgErrors, GetByOrgReposData, GetByOrgReposErrors, GetByOrgReposFacetsData, GetByOrgReposFacetsErrors, GetByOrgReposFacetsResponses, GetByOrgReposListData, GetByOrgReposListErrors, GetByOrgReposListResponses, GetByOrgReposResponses, GetByOrgResponses, GetWhoamiData, GetWhoamiErrors, GetWhoamiResponses, PatchByOrgByRepoData, PatchByOrgByRepoErrors, PatchByOrgByRepoResponses, PostByOrgApiKeysData, PostByOrgApiKeysErrors, PostByOrgApiKeysResponses, PostByOrgByRepoBranchesData, PostByOrgByRepoBranchesErrors, PostByOrgByRepoBranchesResponses, PostByOrgByRepoCommitsData, PostByOrgByRepoCommitsErrors, PostByOrgByRepoCommitsResponses, PostByOrgByRepoWebhooksData, PostByOrgByRepoWebhooksErrors, PostByOrgByRepoWebhooksResponses, PostByOrgReposBulkMetadataData, PostByOrgReposBulkMetadataErrors, PostByOrgReposBulkMetadataResponses, PostByOrgReposData, PostByOrgReposErrors, PostByOrgReposResponses } from './types.gen';
+import type { DeleteByOrgApiKeyByIdData, DeleteByOrgApiKeyByIdErrors, DeleteByOrgApiKeyByIdResponses, DeleteByOrgByRepoBranchByBranchData, DeleteByOrgByRepoBranchByBranchErrors, DeleteByOrgByRepoBranchByBranchResponses, DeleteByOrgByRepoData, DeleteByOrgByRepoErrors, DeleteByOrgByRepoResponses, DeleteByOrgByRepoWebhookByWebhookIdData, DeleteByOrgByRepoWebhookByWebhookIdErrors, DeleteByOrgByRepoWebhookByWebhookIdResponses, GetByOrgApiKeyData, GetByOrgApiKeyErrors, GetByOrgApiKeyResponses, GetByOrgByRepoBranchData, GetByOrgByRepoBranchErrors, GetByOrgByRepoBranchResponses, GetByOrgByRepoCommitByShaData, GetByOrgByRepoCommitByShaErrors, GetByOrgByRepoCommitByShaResponses, GetByOrgByRepoCommitData, GetByOrgByRepoCommitErrors, GetByOrgByRepoCommitResponses, GetByOrgByRepoContentData, GetByOrgByRepoContentErrors, GetByOrgByRepoContentResponses, GetByOrgByRepoData, GetByOrgByRepoDiffData, GetByOrgByRepoDiffErrors, GetByOrgByRepoDiffResponses, GetByOrgByRepoErrors, GetByOrgByRepoResponses, GetByOrgByRepoWebhookData, GetByOrgByRepoWebhookErrors, GetByOrgByRepoWebhookResponses, GetByOrgData, GetByOrgErrors, GetByOrgRepoData, GetByOrgRepoErrors, GetByOrgRepoResponses, GetByOrgRepoTagsData, GetByOrgRepoTagsErrors, GetByOrgRepoTagsResponses, GetByOrgResponses, GetWhoamiData, GetWhoamiErrors, GetWhoamiResponses, PatchByOrgByRepoData, PatchByOrgByRepoErrors, PatchByOrgByRepoResponses, PostByOrgApiKeyData, PostByOrgApiKeyErrors, PostByOrgApiKeyResponses, PostByOrgByRepoBranchData, PostByOrgByRepoBranchErrors, PostByOrgByRepoBranchResponses, PostByOrgByRepoCommitData, PostByOrgByRepoCommitErrors, PostByOrgByRepoCommitResponses, PostByOrgByRepoWebhookData, PostByOrgByRepoWebhookErrors, PostByOrgByRepoWebhookResponses, PostByOrgRepoBulkTagsData, PostByOrgRepoBulkTagsErrors, PostByOrgRepoBulkTagsResponses, PostByOrgRepoData, PostByOrgRepoErrors, PostByOrgRepoResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -34,9 +34,9 @@ export const getWhoami = <ThrowOnError extends boolean = false>(options?: Option
  *
  * List all API keys for the organization (key values are not returned)
  */
-export const getByOrgApiKeys = <ThrowOnError extends boolean = false>(options: Options<GetByOrgApiKeysData, ThrowOnError>) => (options.client ?? client).get<GetByOrgApiKeysResponses, GetByOrgApiKeysErrors, ThrowOnError>({
+export const getByOrgApiKey = <ThrowOnError extends boolean = false>(options: Options<GetByOrgApiKeyData, ThrowOnError>) => (options.client ?? client).get<GetByOrgApiKeyResponses, GetByOrgApiKeyErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/api-keys',
+    url: '/{org}/api-key',
     ...options
 });
 
@@ -45,9 +45,9 @@ export const getByOrgApiKeys = <ThrowOnError extends boolean = false>(options: O
  *
  * Create a new API key for programmatic access
  */
-export const postByOrgApiKeys = <ThrowOnError extends boolean = false>(options: Options<PostByOrgApiKeysData, ThrowOnError>) => (options.client ?? client).post<PostByOrgApiKeysResponses, PostByOrgApiKeysErrors, ThrowOnError>({
+export const postByOrgApiKey = <ThrowOnError extends boolean = false>(options: Options<PostByOrgApiKeyData, ThrowOnError>) => (options.client ?? client).post<PostByOrgApiKeyResponses, PostByOrgApiKeyErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/api-keys',
+    url: '/{org}/api-key',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -60,20 +60,20 @@ export const postByOrgApiKeys = <ThrowOnError extends boolean = false>(options: 
  *
  * Revoke an API key by its ID
  */
-export const deleteByOrgApiKeysById = <ThrowOnError extends boolean = false>(options: Options<DeleteByOrgApiKeysByIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteByOrgApiKeysByIdResponses, DeleteByOrgApiKeysByIdErrors, ThrowOnError>({
+export const deleteByOrgApiKeyById = <ThrowOnError extends boolean = false>(options: Options<DeleteByOrgApiKeyByIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteByOrgApiKeyByIdResponses, DeleteByOrgApiKeyByIdErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/api-keys/{id}',
+    url: '/{org}/api-key/{id}',
     ...options
 });
 
 /**
  * List repositories
  *
- * List all repositories in the organization
+ * List repositories in the organization using cursor pagination
  */
-export const getByOrgRepos = <ThrowOnError extends boolean = false>(options: Options<GetByOrgReposData, ThrowOnError>) => (options.client ?? client).get<GetByOrgReposResponses, GetByOrgReposErrors, ThrowOnError>({
+export const getByOrgRepo = <ThrowOnError extends boolean = false>(options: Options<GetByOrgRepoData, ThrowOnError>) => (options.client ?? client).get<GetByOrgRepoResponses, GetByOrgRepoErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/repos',
+    url: '/{org}/repo',
     ...options
 });
 
@@ -82,61 +82,9 @@ export const getByOrgRepos = <ThrowOnError extends boolean = false>(options: Opt
  *
  * Create a new repository in the organization
  */
-export const postByOrgRepos = <ThrowOnError extends boolean = false>(options: Options<PostByOrgReposData, ThrowOnError>) => (options.client ?? client).post<PostByOrgReposResponses, PostByOrgReposErrors, ThrowOnError>({
+export const postByOrgRepo = <ThrowOnError extends boolean = false>(options: Options<PostByOrgRepoData, ThrowOnError>) => (options.client ?? client).post<PostByOrgRepoResponses, PostByOrgRepoErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/repos',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * List repositories (paginated)
- *
- * List repositories with offset pagination, sorting, search, and metadata filtering
- */
-export const getByOrgReposList = <ThrowOnError extends boolean = false>(options: Options<GetByOrgReposListData, ThrowOnError>) => (options.client ?? client).get<GetByOrgReposListResponses, GetByOrgReposListErrors, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/repos/list',
-    ...options
-});
-
-/**
- * Get metadata facets
- *
- * Get metadata facets for repos
- */
-export const getByOrgReposFacets = <ThrowOnError extends boolean = false>(options: Options<GetByOrgReposFacetsData, ThrowOnError>) => (options.client ?? client).get<GetByOrgReposFacetsResponses, GetByOrgReposFacetsErrors, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/repos/facets',
-    ...options
-});
-
-/**
- * Bulk delete repositories
- *
- * Bulk delete repos
- */
-export const deleteByOrgReposBulk = <ThrowOnError extends boolean = false>(options: Options<DeleteByOrgReposBulkData, ThrowOnError>) => (options.client ?? client).delete<DeleteByOrgReposBulkResponses, DeleteByOrgReposBulkErrors, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/repos/bulk',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Bulk set or remove metadata
- *
- * Bulk set or remove metadata
- */
-export const postByOrgReposBulkMetadata = <ThrowOnError extends boolean = false>(options: Options<PostByOrgReposBulkMetadataData, ThrowOnError>) => (options.client ?? client).post<PostByOrgReposBulkMetadataResponses, PostByOrgReposBulkMetadataErrors, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/repos/bulk/metadata',
+    url: '/{org}/repo',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -169,11 +117,37 @@ export const getByOrgByRepo = <ThrowOnError extends boolean = false>(options: Op
 /**
  * Update repository
  *
- * Update repository name or upstream configuration
+ * Update repository name, default branch, tags, or upstream configuration. Tags are patched: set values to add/update and null values to remove.
  */
 export const patchByOrgByRepo = <ThrowOnError extends boolean = false>(options: Options<PatchByOrgByRepoData, ThrowOnError>) => (options.client ?? client).patch<PatchByOrgByRepoResponses, PatchByOrgByRepoErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/{org}/{repo}',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Get repo Tags
+ *
+ * Get repository tag values and counts
+ */
+export const getByOrgRepoTags = <ThrowOnError extends boolean = false>(options: Options<GetByOrgRepoTagsData, ThrowOnError>) => (options.client ?? client).get<GetByOrgRepoTagsResponses, GetByOrgRepoTagsErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/{org}/repo/tags',
+    ...options
+});
+
+/**
+ * Bulk update Tags
+ *
+ * Bulk set or remove repo tags
+ */
+export const postByOrgRepoBulkTags = <ThrowOnError extends boolean = false>(options: Options<PostByOrgRepoBulkTagsData, ThrowOnError>) => (options.client ?? client).post<PostByOrgRepoBulkTagsResponses, PostByOrgRepoBulkTagsErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/{org}/repo/bulk/tags',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -197,9 +171,9 @@ export const getByOrgByRepoContent = <ThrowOnError extends boolean = false>(opti
  *
  * List all branches in a repository
  */
-export const getByOrgByRepoBranches = <ThrowOnError extends boolean = false>(options: Options<GetByOrgByRepoBranchesData, ThrowOnError>) => (options.client ?? client).get<GetByOrgByRepoBranchesResponses, GetByOrgByRepoBranchesErrors, ThrowOnError>({
+export const getByOrgByRepoBranch = <ThrowOnError extends boolean = false>(options: Options<GetByOrgByRepoBranchData, ThrowOnError>) => (options.client ?? client).get<GetByOrgByRepoBranchResponses, GetByOrgByRepoBranchErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/{repo}/branches',
+    url: '/{org}/{repo}/branch',
     ...options
 });
 
@@ -208,9 +182,9 @@ export const getByOrgByRepoBranches = <ThrowOnError extends boolean = false>(opt
  *
  * Create a new branch from an existing ref
  */
-export const postByOrgByRepoBranches = <ThrowOnError extends boolean = false>(options: Options<PostByOrgByRepoBranchesData, ThrowOnError>) => (options.client ?? client).post<PostByOrgByRepoBranchesResponses, PostByOrgByRepoBranchesErrors, ThrowOnError>({
+export const postByOrgByRepoBranch = <ThrowOnError extends boolean = false>(options: Options<PostByOrgByRepoBranchData, ThrowOnError>) => (options.client ?? client).post<PostByOrgByRepoBranchResponses, PostByOrgByRepoBranchErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/{repo}/branches',
+    url: '/{org}/{repo}/branch',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -223,9 +197,9 @@ export const postByOrgByRepoBranches = <ThrowOnError extends boolean = false>(op
  *
  * Delete a branch from a repository
  */
-export const deleteByOrgByRepoBranchesByBranch = <ThrowOnError extends boolean = false>(options: Options<DeleteByOrgByRepoBranchesByBranchData, ThrowOnError>) => (options.client ?? client).delete<DeleteByOrgByRepoBranchesByBranchResponses, DeleteByOrgByRepoBranchesByBranchErrors, ThrowOnError>({
+export const deleteByOrgByRepoBranchByBranch = <ThrowOnError extends boolean = false>(options: Options<DeleteByOrgByRepoBranchByBranchData, ThrowOnError>) => (options.client ?? client).delete<DeleteByOrgByRepoBranchByBranchResponses, DeleteByOrgByRepoBranchByBranchErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/{repo}/branches/{branch}',
+    url: '/{org}/{repo}/branch/{branch}',
     ...options
 });
 
@@ -234,9 +208,9 @@ export const deleteByOrgByRepoBranchesByBranch = <ThrowOnError extends boolean =
  *
  * List commits for a repository from a specific ref
  */
-export const getByOrgByRepoCommits = <ThrowOnError extends boolean = false>(options: Options<GetByOrgByRepoCommitsData, ThrowOnError>) => (options.client ?? client).get<GetByOrgByRepoCommitsResponses, GetByOrgByRepoCommitsErrors, ThrowOnError>({
+export const getByOrgByRepoCommit = <ThrowOnError extends boolean = false>(options: Options<GetByOrgByRepoCommitData, ThrowOnError>) => (options.client ?? client).get<GetByOrgByRepoCommitResponses, GetByOrgByRepoCommitErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/{repo}/commits',
+    url: '/{org}/{repo}/commit',
     ...options
 });
 
@@ -245,9 +219,9 @@ export const getByOrgByRepoCommits = <ThrowOnError extends boolean = false>(opti
  *
  * Create a new commit on a branch with file changes
  */
-export const postByOrgByRepoCommits = <ThrowOnError extends boolean = false>(options: Options<PostByOrgByRepoCommitsData, ThrowOnError>) => (options.client ?? client).post<PostByOrgByRepoCommitsResponses, PostByOrgByRepoCommitsErrors, ThrowOnError>({
+export const postByOrgByRepoCommit = <ThrowOnError extends boolean = false>(options: Options<PostByOrgByRepoCommitData, ThrowOnError>) => (options.client ?? client).post<PostByOrgByRepoCommitResponses, PostByOrgByRepoCommitErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/{repo}/commits',
+    url: '/{org}/{repo}/commit',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -260,9 +234,9 @@ export const postByOrgByRepoCommits = <ThrowOnError extends boolean = false>(opt
  *
  * Retrieve a specific commit by its SHA
  */
-export const getByOrgByRepoCommitsBySha = <ThrowOnError extends boolean = false>(options: Options<GetByOrgByRepoCommitsByShaData, ThrowOnError>) => (options.client ?? client).get<GetByOrgByRepoCommitsByShaResponses, GetByOrgByRepoCommitsByShaErrors, ThrowOnError>({
+export const getByOrgByRepoCommitBySha = <ThrowOnError extends boolean = false>(options: Options<GetByOrgByRepoCommitByShaData, ThrowOnError>) => (options.client ?? client).get<GetByOrgByRepoCommitByShaResponses, GetByOrgByRepoCommitByShaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/{repo}/commits/{sha}',
+    url: '/{org}/{repo}/commit/{sha}',
     ...options
 });
 
@@ -282,9 +256,9 @@ export const getByOrgByRepoDiff = <ThrowOnError extends boolean = false>(options
  *
  * List webhooks for a repository
  */
-export const getByOrgByRepoWebhooks = <ThrowOnError extends boolean = false>(options: Options<GetByOrgByRepoWebhooksData, ThrowOnError>) => (options.client ?? client).get<GetByOrgByRepoWebhooksResponses, GetByOrgByRepoWebhooksErrors, ThrowOnError>({
+export const getByOrgByRepoWebhook = <ThrowOnError extends boolean = false>(options: Options<GetByOrgByRepoWebhookData, ThrowOnError>) => (options.client ?? client).get<GetByOrgByRepoWebhookResponses, GetByOrgByRepoWebhookErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/{repo}/webhooks',
+    url: '/{org}/{repo}/webhook',
     ...options
 });
 
@@ -293,9 +267,9 @@ export const getByOrgByRepoWebhooks = <ThrowOnError extends boolean = false>(opt
  *
  * Create a webhook for a repository
  */
-export const postByOrgByRepoWebhooks = <ThrowOnError extends boolean = false>(options: Options<PostByOrgByRepoWebhooksData, ThrowOnError>) => (options.client ?? client).post<PostByOrgByRepoWebhooksResponses, PostByOrgByRepoWebhooksErrors, ThrowOnError>({
+export const postByOrgByRepoWebhook = <ThrowOnError extends boolean = false>(options: Options<PostByOrgByRepoWebhookData, ThrowOnError>) => (options.client ?? client).post<PostByOrgByRepoWebhookResponses, PostByOrgByRepoWebhookErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/{repo}/webhooks',
+    url: '/{org}/{repo}/webhook',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -308,9 +282,9 @@ export const postByOrgByRepoWebhooks = <ThrowOnError extends boolean = false>(op
  *
  * Delete a webhook from a repository
  */
-export const deleteByOrgByRepoWebhooksByWebhookId = <ThrowOnError extends boolean = false>(options: Options<DeleteByOrgByRepoWebhooksByWebhookIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteByOrgByRepoWebhooksByWebhookIdResponses, DeleteByOrgByRepoWebhooksByWebhookIdErrors, ThrowOnError>({
+export const deleteByOrgByRepoWebhookByWebhookId = <ThrowOnError extends boolean = false>(options: Options<DeleteByOrgByRepoWebhookByWebhookIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteByOrgByRepoWebhookByWebhookIdResponses, DeleteByOrgByRepoWebhookByWebhookIdErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/{org}/{repo}/webhooks/{webhookId}',
+    url: '/{org}/{repo}/webhook/{webhookId}',
     ...options
 });
 

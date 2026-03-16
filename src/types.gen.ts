@@ -118,16 +118,16 @@ export type GetWhoamiResponses = {
 
 export type GetWhoamiResponse = GetWhoamiResponses[keyof GetWhoamiResponses];
 
-export type GetByOrgApiKeysData = {
+export type GetByOrgApiKeyData = {
     body?: never;
     path: {
         org: string;
     };
     query?: never;
-    url: '/{org}/api-keys';
+    url: '/{org}/api-key';
 };
 
-export type GetByOrgApiKeysErrors = {
+export type GetByOrgApiKeyErrors = {
     /**
      * Invalid request
      */
@@ -214,9 +214,9 @@ export type GetByOrgApiKeysErrors = {
     };
 };
 
-export type GetByOrgApiKeysError = GetByOrgApiKeysErrors[keyof GetByOrgApiKeysErrors];
+export type GetByOrgApiKeyError = GetByOrgApiKeyErrors[keyof GetByOrgApiKeyErrors];
 
-export type GetByOrgApiKeysResponses = {
+export type GetByOrgApiKeyResponses = {
     /**
      * API keys list
      */
@@ -233,9 +233,9 @@ export type GetByOrgApiKeysResponses = {
     };
 };
 
-export type GetByOrgApiKeysResponse = GetByOrgApiKeysResponses[keyof GetByOrgApiKeysResponses];
+export type GetByOrgApiKeyResponse = GetByOrgApiKeyResponses[keyof GetByOrgApiKeyResponses];
 
-export type PostByOrgApiKeysData = {
+export type PostByOrgApiKeyData = {
     body: {
         name?: string;
         scopes?: Array<'git:read' | 'git:write' | 'repo:read' | 'repo:create' | 'repo:delete' | 'webhook:read' | 'webhook:write' | 'admin'>;
@@ -244,10 +244,10 @@ export type PostByOrgApiKeysData = {
         org: string;
     };
     query?: never;
-    url: '/{org}/api-keys';
+    url: '/{org}/api-key';
 };
 
-export type PostByOrgApiKeysErrors = {
+export type PostByOrgApiKeyErrors = {
     /**
      * Invalid request
      */
@@ -334,9 +334,9 @@ export type PostByOrgApiKeysErrors = {
     };
 };
 
-export type PostByOrgApiKeysError = PostByOrgApiKeysErrors[keyof PostByOrgApiKeysErrors];
+export type PostByOrgApiKeyError = PostByOrgApiKeyErrors[keyof PostByOrgApiKeyErrors];
 
-export type PostByOrgApiKeysResponses = {
+export type PostByOrgApiKeyResponses = {
     /**
      * API key created
      */
@@ -349,19 +349,19 @@ export type PostByOrgApiKeysResponses = {
     };
 };
 
-export type PostByOrgApiKeysResponse = PostByOrgApiKeysResponses[keyof PostByOrgApiKeysResponses];
+export type PostByOrgApiKeyResponse = PostByOrgApiKeyResponses[keyof PostByOrgApiKeyResponses];
 
-export type DeleteByOrgApiKeysByIdData = {
+export type DeleteByOrgApiKeyByIdData = {
     body?: never;
     path: {
         id: string;
         org: string;
     };
     query?: never;
-    url: '/{org}/api-keys/{id}';
+    url: '/{org}/api-key/{id}';
 };
 
-export type DeleteByOrgApiKeysByIdErrors = {
+export type DeleteByOrgApiKeyByIdErrors = {
     /**
      * Invalid request
      */
@@ -448,9 +448,9 @@ export type DeleteByOrgApiKeysByIdErrors = {
     };
 };
 
-export type DeleteByOrgApiKeysByIdError = DeleteByOrgApiKeysByIdErrors[keyof DeleteByOrgApiKeysByIdErrors];
+export type DeleteByOrgApiKeyByIdError = DeleteByOrgApiKeyByIdErrors[keyof DeleteByOrgApiKeyByIdErrors];
 
-export type DeleteByOrgApiKeysByIdResponses = {
+export type DeleteByOrgApiKeyByIdResponses = {
     /**
      * API key revoked
      */
@@ -459,9 +459,9 @@ export type DeleteByOrgApiKeysByIdResponses = {
     };
 };
 
-export type DeleteByOrgApiKeysByIdResponse = DeleteByOrgApiKeysByIdResponses[keyof DeleteByOrgApiKeysByIdResponses];
+export type DeleteByOrgApiKeyByIdResponse = DeleteByOrgApiKeyByIdResponses[keyof DeleteByOrgApiKeyByIdResponses];
 
-export type GetByOrgReposData = {
+export type GetByOrgRepoData = {
     body?: never;
     path: {
         org: string;
@@ -469,11 +469,12 @@ export type GetByOrgReposData = {
     query?: {
         cursor?: string;
         limit?: number;
+        tags?: string;
     };
-    url: '/{org}/repos';
+    url: '/{org}/repo';
 };
 
-export type GetByOrgReposErrors = {
+export type GetByOrgRepoErrors = {
     /**
      * Invalid request
      */
@@ -560,9 +561,9 @@ export type GetByOrgReposErrors = {
     };
 };
 
-export type GetByOrgReposError = GetByOrgReposErrors[keyof GetByOrgReposErrors];
+export type GetByOrgRepoError = GetByOrgRepoErrors[keyof GetByOrgRepoErrors];
 
-export type GetByOrgReposResponses = {
+export type GetByOrgRepoResponses = {
     /**
      * Repository list
      */
@@ -576,6 +577,9 @@ export type GetByOrgReposResponses = {
             default_branch: string;
             head_oid: string | null;
             created_at: string;
+            tags: {
+                [key: string]: string;
+            };
             /**
              * Optionally add an upstream repository. You can configure automatic syncing from the upstream repository.
              */
@@ -623,12 +627,15 @@ export type GetByOrgReposResponses = {
     };
 };
 
-export type GetByOrgReposResponse = GetByOrgReposResponses[keyof GetByOrgReposResponses];
+export type GetByOrgRepoResponse = GetByOrgRepoResponses[keyof GetByOrgRepoResponses];
 
-export type PostByOrgReposData = {
+export type PostByOrgRepoData = {
     body: {
         name: string;
         default_branch?: string;
+        tags?: {
+            [key: string]: string;
+        };
         upstream?: {
             /**
              * URL of the upstream repository
@@ -662,10 +669,10 @@ export type PostByOrgReposData = {
         org: string;
     };
     query?: never;
-    url: '/{org}/repos';
+    url: '/{org}/repo';
 };
 
-export type PostByOrgReposErrors = {
+export type PostByOrgRepoErrors = {
     /**
      * Invalid request
      */
@@ -752,9 +759,9 @@ export type PostByOrgReposErrors = {
     };
 };
 
-export type PostByOrgReposError = PostByOrgReposErrors[keyof PostByOrgReposErrors];
+export type PostByOrgRepoError = PostByOrgRepoErrors[keyof PostByOrgRepoErrors];
 
-export type PostByOrgReposResponses = {
+export type PostByOrgRepoResponses = {
     /**
      * Repository created
      */
@@ -765,6 +772,9 @@ export type PostByOrgReposResponses = {
         default_branch: string;
         head_oid: string | null;
         created_at: string;
+        tags: {
+            [key: string]: string;
+        };
         /**
          * Optionally add an upstream repository. You can configure automatic syncing from the upstream repository.
          */
@@ -811,478 +821,7 @@ export type PostByOrgReposResponses = {
     };
 };
 
-export type PostByOrgReposResponse = PostByOrgReposResponses[keyof PostByOrgReposResponses];
-
-export type GetByOrgReposListData = {
-    body?: never;
-    path: {
-        org: string;
-    };
-    query?: {
-        page?: number;
-        pageSize?: number;
-        sortBy?: 'name' | 'created_at';
-        sortOrder?: 'asc' | 'desc';
-        search?: string;
-        metadata?: string;
-    };
-    url: '/{org}/repos/list';
-};
-
-export type GetByOrgReposListErrors = {
-    /**
-     * Invalid request
-     */
-    400: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Unauthorized
-     */
-    401: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Forbidden
-     */
-    403: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Not found
-     */
-    404: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Not acceptable
-     */
-    406: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Conflict
-     */
-    409: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Internal error
-     */
-    500: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-};
-
-export type GetByOrgReposListError = GetByOrgReposListErrors[keyof GetByOrgReposListErrors];
-
-export type GetByOrgReposListResponses = {
-    /**
-     * Paginated repository list
-     */
-    200: {
-        total: number;
-        page: number;
-        page_size: number;
-        total_pages: number;
-        repos: Array<{
-            id: string;
-            name: string;
-            default_branch: string;
-            created_at: string;
-            metadata: {
-                [key: string]: string;
-            };
-            upstream: {
-                uri: string;
-                status: 'synced' | 'error';
-            } | null;
-        }>;
-    };
-};
-
-export type GetByOrgReposListResponse = GetByOrgReposListResponses[keyof GetByOrgReposListResponses];
-
-export type GetByOrgReposFacetsData = {
-    body?: never;
-    path: {
-        org: string;
-    };
-    query?: never;
-    url: '/{org}/repos/facets';
-};
-
-export type GetByOrgReposFacetsErrors = {
-    /**
-     * Invalid request
-     */
-    400: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Unauthorized
-     */
-    401: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Forbidden
-     */
-    403: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Not found
-     */
-    404: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Not acceptable
-     */
-    406: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Conflict
-     */
-    409: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Internal error
-     */
-    500: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-};
-
-export type GetByOrgReposFacetsError = GetByOrgReposFacetsErrors[keyof GetByOrgReposFacetsErrors];
-
-export type GetByOrgReposFacetsResponses = {
-    /**
-     * Facets
-     */
-    200: {
-        facets: {
-            [key: string]: Array<{
-                value: string;
-                count: number;
-            }>;
-        };
-    };
-};
-
-export type GetByOrgReposFacetsResponse = GetByOrgReposFacetsResponses[keyof GetByOrgReposFacetsResponses];
-
-export type DeleteByOrgReposBulkData = {
-    body: {
-        repo_ids: Array<string>;
-    };
-    path: {
-        org: string;
-    };
-    query?: never;
-    url: '/{org}/repos/bulk';
-};
-
-export type DeleteByOrgReposBulkErrors = {
-    /**
-     * Invalid request
-     */
-    400: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Unauthorized
-     */
-    401: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Forbidden
-     */
-    403: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Not found
-     */
-    404: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Not acceptable
-     */
-    406: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Conflict
-     */
-    409: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Internal error
-     */
-    500: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-};
-
-export type DeleteByOrgReposBulkError = DeleteByOrgReposBulkErrors[keyof DeleteByOrgReposBulkErrors];
-
-export type DeleteByOrgReposBulkResponses = {
-    /**
-     * Deleted count
-     */
-    200: {
-        deleted: number;
-    };
-};
-
-export type DeleteByOrgReposBulkResponse = DeleteByOrgReposBulkResponses[keyof DeleteByOrgReposBulkResponses];
-
-export type PostByOrgReposBulkMetadataData = {
-    body: {
-        repo_ids: Array<string>;
-        action: 'set' | 'remove';
-        key: string;
-        value?: string;
-    };
-    path: {
-        org: string;
-    };
-    query?: never;
-    url: '/{org}/repos/bulk/metadata';
-};
-
-export type PostByOrgReposBulkMetadataErrors = {
-    /**
-     * Invalid request
-     */
-    400: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Unauthorized
-     */
-    401: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Forbidden
-     */
-    403: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Not found
-     */
-    404: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Not acceptable
-     */
-    406: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Conflict
-     */
-    409: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-    /**
-     * Internal error
-     */
-    500: {
-        error: {
-            code: string;
-            message: string;
-            details?: {
-                [key: string]: unknown;
-            };
-        };
-    };
-};
-
-export type PostByOrgReposBulkMetadataError = PostByOrgReposBulkMetadataErrors[keyof PostByOrgReposBulkMetadataErrors];
-
-export type PostByOrgReposBulkMetadataResponses = {
-    /**
-     * Updated count
-     */
-    200: {
-        updated: number;
-    };
-};
-
-export type PostByOrgReposBulkMetadataResponse = PostByOrgReposBulkMetadataResponses[keyof PostByOrgReposBulkMetadataResponses];
+export type PostByOrgRepoResponse = PostByOrgRepoResponses[keyof PostByOrgRepoResponses];
 
 export type DeleteByOrgByRepoData = {
     body?: never;
@@ -1504,6 +1043,9 @@ export type GetByOrgByRepoResponses = {
         default_branch: string;
         head_oid: string | null;
         created_at: string;
+        tags: {
+            [key: string]: string;
+        };
         /**
          * Optionally add an upstream repository. You can configure automatic syncing from the upstream repository.
          */
@@ -1556,6 +1098,9 @@ export type PatchByOrgByRepoData = {
     body: {
         name?: string;
         default_branch?: string;
+        tags?: {
+            [key: string]: string | null;
+        };
         upstream?: {
             /**
              * URL of the upstream repository
@@ -1693,6 +1238,9 @@ export type PatchByOrgByRepoResponses = {
         default_branch: string;
         head_oid: string | null;
         created_at: string;
+        tags: {
+            [key: string]: string;
+        };
         /**
          * Optionally add an upstream repository. You can configure automatic syncing from the upstream repository.
          */
@@ -1740,6 +1288,234 @@ export type PatchByOrgByRepoResponses = {
 };
 
 export type PatchByOrgByRepoResponse = PatchByOrgByRepoResponses[keyof PatchByOrgByRepoResponses];
+
+export type GetByOrgRepoTagsData = {
+    body?: never;
+    path: {
+        org: string;
+    };
+    query?: never;
+    url: '/{org}/repo/tags';
+};
+
+export type GetByOrgRepoTagsErrors = {
+    /**
+     * Invalid request
+     */
+    400: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Unauthorized
+     */
+    401: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Forbidden
+     */
+    403: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Not found
+     */
+    404: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Not acceptable
+     */
+    406: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Conflict
+     */
+    409: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Internal error
+     */
+    500: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+};
+
+export type GetByOrgRepoTagsError = GetByOrgRepoTagsErrors[keyof GetByOrgRepoTagsErrors];
+
+export type GetByOrgRepoTagsResponses = {
+    /**
+     * Repo tags
+     */
+    200: {
+        tags: {
+            [key: string]: Array<{
+                value: string;
+                count: number;
+            }>;
+        };
+    };
+};
+
+export type GetByOrgRepoTagsResponse = GetByOrgRepoTagsResponses[keyof GetByOrgRepoTagsResponses];
+
+export type PostByOrgRepoBulkTagsData = {
+    body: {
+        repo_ids: Array<string>;
+        action: 'set' | 'remove';
+        key: string;
+        value?: string;
+    };
+    path: {
+        org: string;
+    };
+    query?: never;
+    url: '/{org}/repo/bulk/tags';
+};
+
+export type PostByOrgRepoBulkTagsErrors = {
+    /**
+     * Invalid request
+     */
+    400: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Unauthorized
+     */
+    401: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Forbidden
+     */
+    403: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Not found
+     */
+    404: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Not acceptable
+     */
+    406: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Conflict
+     */
+    409: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+    /**
+     * Internal error
+     */
+    500: {
+        error: {
+            code: string;
+            message: string;
+            details?: {
+                [key: string]: unknown;
+            };
+        };
+    };
+};
+
+export type PostByOrgRepoBulkTagsError = PostByOrgRepoBulkTagsErrors[keyof PostByOrgRepoBulkTagsErrors];
+
+export type PostByOrgRepoBulkTagsResponses = {
+    /**
+     * Updated count
+     */
+    200: {
+        updated: number;
+    };
+};
+
+export type PostByOrgRepoBulkTagsResponse = PostByOrgRepoBulkTagsResponses[keyof PostByOrgRepoBulkTagsResponses];
 
 export type GetByOrgByRepoContentData = {
     body?: never;
@@ -1899,7 +1675,7 @@ export type GetByOrgByRepoContentResponses = {
 
 export type GetByOrgByRepoContentResponse = GetByOrgByRepoContentResponses[keyof GetByOrgByRepoContentResponses];
 
-export type GetByOrgByRepoBranchesData = {
+export type GetByOrgByRepoBranchData = {
     body?: never;
     path: {
         org: string;
@@ -1909,10 +1685,10 @@ export type GetByOrgByRepoBranchesData = {
         cursor?: string;
         limit?: number;
     };
-    url: '/{org}/{repo}/branches';
+    url: '/{org}/{repo}/branch';
 };
 
-export type GetByOrgByRepoBranchesErrors = {
+export type GetByOrgByRepoBranchErrors = {
     /**
      * Invalid request
      */
@@ -1999,9 +1775,9 @@ export type GetByOrgByRepoBranchesErrors = {
     };
 };
 
-export type GetByOrgByRepoBranchesError = GetByOrgByRepoBranchesErrors[keyof GetByOrgByRepoBranchesErrors];
+export type GetByOrgByRepoBranchError = GetByOrgByRepoBranchErrors[keyof GetByOrgByRepoBranchErrors];
 
-export type GetByOrgByRepoBranchesResponses = {
+export type GetByOrgByRepoBranchResponses = {
     /**
      * Branch list
      */
@@ -2016,9 +1792,9 @@ export type GetByOrgByRepoBranchesResponses = {
     };
 };
 
-export type GetByOrgByRepoBranchesResponse = GetByOrgByRepoBranchesResponses[keyof GetByOrgByRepoBranchesResponses];
+export type GetByOrgByRepoBranchResponse = GetByOrgByRepoBranchResponses[keyof GetByOrgByRepoBranchResponses];
 
-export type PostByOrgByRepoBranchesData = {
+export type PostByOrgByRepoBranchData = {
     body: {
         name: string;
         from: string;
@@ -2028,10 +1804,10 @@ export type PostByOrgByRepoBranchesData = {
         repo: string;
     };
     query?: never;
-    url: '/{org}/{repo}/branches';
+    url: '/{org}/{repo}/branch';
 };
 
-export type PostByOrgByRepoBranchesErrors = {
+export type PostByOrgByRepoBranchErrors = {
     /**
      * Invalid request
      */
@@ -2118,9 +1894,9 @@ export type PostByOrgByRepoBranchesErrors = {
     };
 };
 
-export type PostByOrgByRepoBranchesError = PostByOrgByRepoBranchesErrors[keyof PostByOrgByRepoBranchesErrors];
+export type PostByOrgByRepoBranchError = PostByOrgByRepoBranchErrors[keyof PostByOrgByRepoBranchErrors];
 
-export type PostByOrgByRepoBranchesResponses = {
+export type PostByOrgByRepoBranchResponses = {
     /**
      * Branch created
      */
@@ -2131,9 +1907,9 @@ export type PostByOrgByRepoBranchesResponses = {
     };
 };
 
-export type PostByOrgByRepoBranchesResponse = PostByOrgByRepoBranchesResponses[keyof PostByOrgByRepoBranchesResponses];
+export type PostByOrgByRepoBranchResponse = PostByOrgByRepoBranchResponses[keyof PostByOrgByRepoBranchResponses];
 
-export type DeleteByOrgByRepoBranchesByBranchData = {
+export type DeleteByOrgByRepoBranchByBranchData = {
     body?: never;
     path: {
         org: string;
@@ -2141,10 +1917,10 @@ export type DeleteByOrgByRepoBranchesByBranchData = {
         branch: string;
     };
     query?: never;
-    url: '/{org}/{repo}/branches/{branch}';
+    url: '/{org}/{repo}/branch/{branch}';
 };
 
-export type DeleteByOrgByRepoBranchesByBranchErrors = {
+export type DeleteByOrgByRepoBranchByBranchErrors = {
     /**
      * Invalid request
      */
@@ -2231,9 +2007,9 @@ export type DeleteByOrgByRepoBranchesByBranchErrors = {
     };
 };
 
-export type DeleteByOrgByRepoBranchesByBranchError = DeleteByOrgByRepoBranchesByBranchErrors[keyof DeleteByOrgByRepoBranchesByBranchErrors];
+export type DeleteByOrgByRepoBranchByBranchError = DeleteByOrgByRepoBranchByBranchErrors[keyof DeleteByOrgByRepoBranchByBranchErrors];
 
-export type DeleteByOrgByRepoBranchesByBranchResponses = {
+export type DeleteByOrgByRepoBranchByBranchResponses = {
     /**
      * Branch deleted
      */
@@ -2242,9 +2018,9 @@ export type DeleteByOrgByRepoBranchesByBranchResponses = {
     };
 };
 
-export type DeleteByOrgByRepoBranchesByBranchResponse = DeleteByOrgByRepoBranchesByBranchResponses[keyof DeleteByOrgByRepoBranchesByBranchResponses];
+export type DeleteByOrgByRepoBranchByBranchResponse = DeleteByOrgByRepoBranchByBranchResponses[keyof DeleteByOrgByRepoBranchByBranchResponses];
 
-export type GetByOrgByRepoCommitsData = {
+export type GetByOrgByRepoCommitData = {
     body?: never;
     path: {
         org: string;
@@ -2255,10 +2031,10 @@ export type GetByOrgByRepoCommitsData = {
         limit?: number;
         ref?: string;
     };
-    url: '/{org}/{repo}/commits';
+    url: '/{org}/{repo}/commit';
 };
 
-export type GetByOrgByRepoCommitsErrors = {
+export type GetByOrgByRepoCommitErrors = {
     /**
      * Invalid request
      */
@@ -2345,9 +2121,9 @@ export type GetByOrgByRepoCommitsErrors = {
     };
 };
 
-export type GetByOrgByRepoCommitsError = GetByOrgByRepoCommitsErrors[keyof GetByOrgByRepoCommitsErrors];
+export type GetByOrgByRepoCommitError = GetByOrgByRepoCommitErrors[keyof GetByOrgByRepoCommitErrors];
 
-export type GetByOrgByRepoCommitsResponses = {
+export type GetByOrgByRepoCommitResponses = {
     /**
      * Commit list
      */
@@ -2372,9 +2148,9 @@ export type GetByOrgByRepoCommitsResponses = {
     };
 };
 
-export type GetByOrgByRepoCommitsResponse = GetByOrgByRepoCommitsResponses[keyof GetByOrgByRepoCommitsResponses];
+export type GetByOrgByRepoCommitResponse = GetByOrgByRepoCommitResponses[keyof GetByOrgByRepoCommitResponses];
 
-export type PostByOrgByRepoCommitsData = {
+export type PostByOrgByRepoCommitData = {
     body: {
         branch: string;
         message: string;
@@ -2405,10 +2181,10 @@ export type PostByOrgByRepoCommitsData = {
         repo: string;
     };
     query?: never;
-    url: '/{org}/{repo}/commits';
+    url: '/{org}/{repo}/commit';
 };
 
-export type PostByOrgByRepoCommitsErrors = {
+export type PostByOrgByRepoCommitErrors = {
     /**
      * Invalid request
      */
@@ -2495,9 +2271,9 @@ export type PostByOrgByRepoCommitsErrors = {
     };
 };
 
-export type PostByOrgByRepoCommitsError = PostByOrgByRepoCommitsErrors[keyof PostByOrgByRepoCommitsErrors];
+export type PostByOrgByRepoCommitError = PostByOrgByRepoCommitErrors[keyof PostByOrgByRepoCommitErrors];
 
-export type PostByOrgByRepoCommitsResponses = {
+export type PostByOrgByRepoCommitResponses = {
     /**
      * Commit created
      */
@@ -2508,9 +2284,9 @@ export type PostByOrgByRepoCommitsResponses = {
     };
 };
 
-export type PostByOrgByRepoCommitsResponse = PostByOrgByRepoCommitsResponses[keyof PostByOrgByRepoCommitsResponses];
+export type PostByOrgByRepoCommitResponse = PostByOrgByRepoCommitResponses[keyof PostByOrgByRepoCommitResponses];
 
-export type GetByOrgByRepoCommitsByShaData = {
+export type GetByOrgByRepoCommitByShaData = {
     body?: never;
     path: {
         org: string;
@@ -2518,10 +2294,10 @@ export type GetByOrgByRepoCommitsByShaData = {
         sha: string;
     };
     query?: never;
-    url: '/{org}/{repo}/commits/{sha}';
+    url: '/{org}/{repo}/commit/{sha}';
 };
 
-export type GetByOrgByRepoCommitsByShaErrors = {
+export type GetByOrgByRepoCommitByShaErrors = {
     /**
      * Invalid request
      */
@@ -2608,9 +2384,9 @@ export type GetByOrgByRepoCommitsByShaErrors = {
     };
 };
 
-export type GetByOrgByRepoCommitsByShaError = GetByOrgByRepoCommitsByShaErrors[keyof GetByOrgByRepoCommitsByShaErrors];
+export type GetByOrgByRepoCommitByShaError = GetByOrgByRepoCommitByShaErrors[keyof GetByOrgByRepoCommitByShaErrors];
 
-export type GetByOrgByRepoCommitsByShaResponses = {
+export type GetByOrgByRepoCommitByShaResponses = {
     /**
      * Commit
      */
@@ -2631,7 +2407,7 @@ export type GetByOrgByRepoCommitsByShaResponses = {
     };
 };
 
-export type GetByOrgByRepoCommitsByShaResponse = GetByOrgByRepoCommitsByShaResponses[keyof GetByOrgByRepoCommitsByShaResponses];
+export type GetByOrgByRepoCommitByShaResponse = GetByOrgByRepoCommitByShaResponses[keyof GetByOrgByRepoCommitByShaResponses];
 
 export type GetByOrgByRepoDiffData = {
     body?: never;
@@ -2769,17 +2545,17 @@ export type GetByOrgByRepoDiffResponses = {
 
 export type GetByOrgByRepoDiffResponse = GetByOrgByRepoDiffResponses[keyof GetByOrgByRepoDiffResponses];
 
-export type GetByOrgByRepoWebhooksData = {
+export type GetByOrgByRepoWebhookData = {
     body?: never;
     path: {
         org: string;
         repo: string;
     };
     query?: never;
-    url: '/{org}/{repo}/webhooks';
+    url: '/{org}/{repo}/webhook';
 };
 
-export type GetByOrgByRepoWebhooksErrors = {
+export type GetByOrgByRepoWebhookErrors = {
     /**
      * Invalid request
      */
@@ -2866,9 +2642,9 @@ export type GetByOrgByRepoWebhooksErrors = {
     };
 };
 
-export type GetByOrgByRepoWebhooksError = GetByOrgByRepoWebhooksErrors[keyof GetByOrgByRepoWebhooksErrors];
+export type GetByOrgByRepoWebhookError = GetByOrgByRepoWebhookErrors[keyof GetByOrgByRepoWebhookErrors];
 
-export type GetByOrgByRepoWebhooksResponses = {
+export type GetByOrgByRepoWebhookResponses = {
     /**
      * Webhook list
      */
@@ -2885,9 +2661,9 @@ export type GetByOrgByRepoWebhooksResponses = {
     };
 };
 
-export type GetByOrgByRepoWebhooksResponse = GetByOrgByRepoWebhooksResponses[keyof GetByOrgByRepoWebhooksResponses];
+export type GetByOrgByRepoWebhookResponse = GetByOrgByRepoWebhookResponses[keyof GetByOrgByRepoWebhookResponses];
 
-export type PostByOrgByRepoWebhooksData = {
+export type PostByOrgByRepoWebhookData = {
     body: {
         url: string;
         events?: Array<'push'>;
@@ -2900,10 +2676,10 @@ export type PostByOrgByRepoWebhooksData = {
         repo: string;
     };
     query?: never;
-    url: '/{org}/{repo}/webhooks';
+    url: '/{org}/{repo}/webhook';
 };
 
-export type PostByOrgByRepoWebhooksErrors = {
+export type PostByOrgByRepoWebhookErrors = {
     /**
      * Invalid request
      */
@@ -2990,9 +2766,9 @@ export type PostByOrgByRepoWebhooksErrors = {
     };
 };
 
-export type PostByOrgByRepoWebhooksError = PostByOrgByRepoWebhooksErrors[keyof PostByOrgByRepoWebhooksErrors];
+export type PostByOrgByRepoWebhookError = PostByOrgByRepoWebhookErrors[keyof PostByOrgByRepoWebhookErrors];
 
-export type PostByOrgByRepoWebhooksResponses = {
+export type PostByOrgByRepoWebhookResponses = {
     /**
      * Webhook created
      */
@@ -3008,9 +2784,9 @@ export type PostByOrgByRepoWebhooksResponses = {
     };
 };
 
-export type PostByOrgByRepoWebhooksResponse = PostByOrgByRepoWebhooksResponses[keyof PostByOrgByRepoWebhooksResponses];
+export type PostByOrgByRepoWebhookResponse = PostByOrgByRepoWebhookResponses[keyof PostByOrgByRepoWebhookResponses];
 
-export type DeleteByOrgByRepoWebhooksByWebhookIdData = {
+export type DeleteByOrgByRepoWebhookByWebhookIdData = {
     body?: never;
     path: {
         org: string;
@@ -3018,10 +2794,10 @@ export type DeleteByOrgByRepoWebhooksByWebhookIdData = {
         webhookId: string;
     };
     query?: never;
-    url: '/{org}/{repo}/webhooks/{webhookId}';
+    url: '/{org}/{repo}/webhook/{webhookId}';
 };
 
-export type DeleteByOrgByRepoWebhooksByWebhookIdErrors = {
+export type DeleteByOrgByRepoWebhookByWebhookIdErrors = {
     /**
      * Invalid request
      */
@@ -3108,9 +2884,9 @@ export type DeleteByOrgByRepoWebhooksByWebhookIdErrors = {
     };
 };
 
-export type DeleteByOrgByRepoWebhooksByWebhookIdError = DeleteByOrgByRepoWebhooksByWebhookIdErrors[keyof DeleteByOrgByRepoWebhooksByWebhookIdErrors];
+export type DeleteByOrgByRepoWebhookByWebhookIdError = DeleteByOrgByRepoWebhookByWebhookIdErrors[keyof DeleteByOrgByRepoWebhookByWebhookIdErrors];
 
-export type DeleteByOrgByRepoWebhooksByWebhookIdResponses = {
+export type DeleteByOrgByRepoWebhookByWebhookIdResponses = {
     /**
      * Webhook deleted
      */
@@ -3119,7 +2895,7 @@ export type DeleteByOrgByRepoWebhooksByWebhookIdResponses = {
     };
 };
 
-export type DeleteByOrgByRepoWebhooksByWebhookIdResponse = DeleteByOrgByRepoWebhooksByWebhookIdResponses[keyof DeleteByOrgByRepoWebhooksByWebhookIdResponses];
+export type DeleteByOrgByRepoWebhookByWebhookIdResponse = DeleteByOrgByRepoWebhookByWebhookIdResponses[keyof DeleteByOrgByRepoWebhookByWebhookIdResponses];
 
 export type GetByOrgData = {
     body?: never;
