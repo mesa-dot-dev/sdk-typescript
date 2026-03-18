@@ -225,6 +225,7 @@ export type GetByOrgApiKeyResponses = {
             id: string;
             name: string | null;
             scopes: Array<string>;
+            repo_ids: Array<string> | null;
             last_used_at: string | null;
             expires_at: string | null;
             revoked_at: string | null;
@@ -239,6 +240,7 @@ export type PostByOrgApiKeyData = {
     body: {
         name?: string;
         scopes?: Array<'git:read' | 'git:write' | 'repo:read' | 'repo:create' | 'repo:delete' | 'webhook:read' | 'webhook:write' | 'admin'>;
+        repo_ids?: Array<string>;
     };
     path: {
         org: string;
@@ -345,6 +347,7 @@ export type PostByOrgApiKeyResponses = {
         key: string;
         name: string | null;
         scopes: Array<string>;
+        repo_ids: Array<string> | null;
         created_at: string;
     };
 };
